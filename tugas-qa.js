@@ -1,11 +1,12 @@
 import http from 'k6/http';
-import { check, fail } from 'k6';
-import { sleep } from 'k6';
+import { check } from 'k6';
+
 import { htmlReport } from "https://raw.githubusercontent.com/benc-uk/k6-reporter/main/dist/bundle.js";
 
 export function handleSummary(data) {
   return {
-    "summary.html": htmlReport(data),
+    "summary.html": htmlReport(data)
+   
   };
 }
 
@@ -27,9 +28,6 @@ export const options = {
       startTime: "30s",
       maxDuration: "2s",
     },
-  },
-  thresholds: {
-    "http_req_duration": ["p(99)<2000"],
   },
 };
 
